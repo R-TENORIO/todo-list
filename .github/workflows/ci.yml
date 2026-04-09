@@ -1,0 +1,66 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # Job 1: Validação de HTML/CSS/JS
+  validate:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        run: |
+          echo "Validando arquivos HTML..."
+          if [ -f index.html ]; then
+            echo "index.html encontrado!"
+          else
+            echo "Erro: index.html nao encontrado!"
+            exit 1
+          fi
+
+      - name: Validate CSS
+        run: |
+          echo "Validando arquivos CSS..."
+          if [ -f styles.css ]; then
+            echo "styles.css encontrado!"
+          else
+            echo "Erro: styles.css nao encontrado!"
+            exit 1
+          fi
+
+      - name: Validate JavaScript
+        run: |
+          echo "Validando arquivos JavaScript..."
+          if [ -f script.js ]; then
+            echo "script.js encontrado!"
+          else
+            echo "Erro: script.js nao encontrado!"
+            exit 1
+          fi
+
+  # Job 2: Build do Docker
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          echo "Construindo imagem Docker..."
+          docker build -t todo-list:${{ github.sha }} .
+          echo "Imagem construida com sucesso!"
+
+      - name: Verify Docker image
+        run: |
+          docker images | grep todo-list
+          echo "Imagem verificada!"
