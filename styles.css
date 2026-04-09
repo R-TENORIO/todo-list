@@ -1,0 +1,167 @@
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* Formulário */
+#todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#todo-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#todo-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#todo-form button[type="submit"] {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#todo-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Lista de tarefas */
+#todo-list {
+    list-style: none;
+}
+
+#todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+#todo-list li:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+#todo-list li span {
+    flex: 1;
+    color: #333;
+    font-size: 1rem;
+}
+
+#todo-list li.completed span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+#todo-list li .actions {
+    display: flex;
+    gap: 8px;
+}
+
+#todo-list li button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+#todo-list li button.complete-btn {
+    background: #28a745;
+    color: white;
+}
+
+#todo-list li button.complete-btn:hover {
+    background: #218838;
+}
+
+#todo-list li button.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+#todo-list li button.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Mensagem quando lista está vazia */
+#todo-list:empty::before {
+    content: "Nenhuma tarefa adicionada. Comece agora!";
+    display: block;
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+    
+    .container {
+        padding: 24px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    #todo-form {
+        flex-direction: column;
+    }
+    
+    #todo-form button[type="submit"] {
+        width: 100%;
+    }
+}
