@@ -79,11 +79,8 @@ todo-list/
 
 - [x] Containerizar com Docker
 - [x] Pipeline CI/CD com GitHub Actions
-- [ ] Adicionar testes automatizados
-- [ ] Deploy automatizado
-
----
-
+- [x] Adicionar testes automatizados
+- [x] Deploy automatizado para GitHub Pages
 <div align="center">
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rodrigo-tenorio/)
